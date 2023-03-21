@@ -6,7 +6,7 @@ const cors = require("cors");
 require("dotenv").config();
 const MongoClient = require("mongodb").MongoClient;
 
-var productRouter = require('./routes/product');
+var productRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -17,7 +17,7 @@ MongoClient.connect(process.env.MONGODB_URI)
 .then(client => {
     console.log("DB är ok");
 
-    const db = client.db("projekt1")
+    const db = client.db("Mostapha-Echelhi")
     app.locals.db = db;
 
 })
@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', productRouter);
-app.use('/users', usersRouter);
+app.use('/api/products', productRouter);
+app.use('/api/users', usersRouter);
 
 module.exports = app;
