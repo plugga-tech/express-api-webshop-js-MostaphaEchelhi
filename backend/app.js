@@ -8,6 +8,7 @@ const MongoClient = require("mongodb").MongoClient;
 
 var productRouter = require('./routes/products');
 var usersRouter = require('./routes/users');
+var ordersRouter = require('./routes/orders');
 
 var app = express();
 
@@ -31,5 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/products', productRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/orders', ordersRouter);
 
 module.exports = app;

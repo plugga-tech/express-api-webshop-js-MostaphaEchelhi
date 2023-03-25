@@ -56,15 +56,16 @@ router.post('/add', function(req, res, next) {
 
 //logga in user
 router.post('/login', function(req, res, next) {
-  let userEmail = req.body.email;
-  let userPassword = req.body.password;
+  const {email, password } = req.body;
+  console.log(email, password);
 
-  
-
-  req.app.locals.db.collection("users").findOne({"email": new ObjectId(login)})
+  req.app.locals.db.collection("users").findOne({"email": email})
   .then(result => {
-    console.log("result from get users" ,result);
-    res.json(result);
+    if (crypto.SHA3 (password).toString() === result.password) {
+        res.status(201).json({email: result.email, password: result.password})
+      } else {
+        res.status(401).json("OPSS")
+      }
   })
 })
 module.exports = router;

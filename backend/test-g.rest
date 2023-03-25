@@ -23,9 +23,9 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "name": "Abbe",
-  "email": "Musse@mail.com",
-  "password": "test"
+  "name": "Bob",
+  "email": "Bob@mail.com",
+  "password": "test123"
 }
 
 ###
@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "Musse@mail.com",
-  "password": "test"
+  "email": "Bob@mail.com",
+  "password": "test123"
 }
 
 ###
@@ -79,14 +79,14 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "user": "{{getUsers.response.body.$[0].id}}",
+  "user": "641b78599615566c399dad97",
       "products": [
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "641a2d4ed6211e2fe690c720",
       "quantity": 1
     },
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "641a2d74d6211e2fe690c721",
       "quantity": 2
     }
   ]
