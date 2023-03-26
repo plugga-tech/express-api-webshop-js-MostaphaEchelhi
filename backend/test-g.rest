@@ -35,7 +35,7 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "Bob@mail.com",
+  "email": "Bb@mail.com",
   "password": "test123"
 }
 

@@ -59,10 +59,11 @@ router.post('/login', function(req, res, next) {
   const {email, password } = req.body;
   console.log(email, password);
 
-  req.app.locals.db.collection("users").findOne({"email": email})
+  req.app.locals.db.collection("users").findOne({email})
   .then(result => {
-    if (crypto.SHA3 (password).toString() === result.password) {
-        res.status(201).json({email: result.email, password: result.password})
+    if (result && crypto.SHA3 (password).toString() === result.password) {
+        res.status(201).json({email: result.email, password: result.password});
+        console.log(email,password);
       } else {
         res.status(401).json("OPSS")
       }
